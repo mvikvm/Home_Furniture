@@ -3,11 +3,11 @@ using MyLib.Models;
 
 namespace ConsoleApp.Services;
 
-internal class ConsoleManager
+internal class ConsoleService
 {
 	private readonly IFurnitureServices furnitureServices;
 
-	public ConsoleManager(IFurnitureServices furnitureServices)
+	public ConsoleService(IFurnitureServices furnitureServices)
 	{
 		this.furnitureServices = furnitureServices ?? throw new ArgumentNullException(nameof(furnitureServices));
 	}
