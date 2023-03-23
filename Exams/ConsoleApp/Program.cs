@@ -13,7 +13,7 @@ IConfigurationRoot config = builder.Build();
 
 using (IFurnitureServices furnitureService = MyLibFactory.GetFurnitureService(config))
 {
-	ConsoleManager manager = new ConsoleManager(furnitureService);
+	ConsoleService manager = new ConsoleService(furnitureService);
 	manager.Run();
 }
 Console.WriteLine("Приложение закрыто.");
