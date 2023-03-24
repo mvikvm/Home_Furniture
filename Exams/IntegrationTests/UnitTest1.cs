@@ -1,3 +1,5 @@
+using NUnit.Framework;
+
 namespace IntegrationTests
 {
     public class Tests
