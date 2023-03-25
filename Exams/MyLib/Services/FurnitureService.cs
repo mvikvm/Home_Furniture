@@ -55,9 +55,8 @@ internal class FurnitureServices : IFurnitureServices
 		{
 			throw new Exception($"Предмет мебели с Id  {variable.Id} не существует.\n");
 		}
-		furniture = variable;
-		//furniture.Name = variable.Name;
-		//furniture.Quantity = variable.Quantity;
+		furniture.Name = variable.Name;
+		furniture.Quantity = variable.Quantity;
 		context.SaveChanges();
 
 		return furniture;
