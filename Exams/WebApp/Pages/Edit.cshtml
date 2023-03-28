@@ -1,0 +1,18 @@
+﻿@page "{id:int}"
+@model EditModel
+@{
+}
+<h2>Редактирование пользователя</h2>
+
+<form method="post">
+    <input name="id" value="@Model.Piece?.Id" type="hidden" />
+    <p>
+        <label>Название предмета мебели</label><br />
+        <input name="name" value="@Model.Piece?.Name" />
+    </p>
+    <p>
+        <label>Колличество</label><br />
+        <input name="quantity" value="@Model.Piece?.Quantity" type="number" />
+    </p>
+    <input type="submit" value="Сохранить" />
+</form>

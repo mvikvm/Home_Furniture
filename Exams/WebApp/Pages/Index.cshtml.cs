@@ -19,5 +19,10 @@ namespace WebApp.Pages
         {
             Items = furnitureServices.GetAllFurniture();
         }
+        //public void OnPost(string name, int quantity)
+        //{
+        //    var pieceOfFurniture = new PieceOfFurniture(name, quantity);
+        //    furnitureServices.Create(pieceOfFurniture);
+        //}
     }
 }
