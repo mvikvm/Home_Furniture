@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using MyLib.Interfaces;
 using MyLib.Models;
 
@@ -19,10 +20,11 @@ namespace WebApp.Pages
         {
             Items = furnitureServices.GetAllFurniture();
         }
-        //public void OnPost(string name, int quantity)
-        //{
-        //    var pieceOfFurniture = new PieceOfFurniture(name, quantity);
-        //    furnitureServices.Create(pieceOfFurniture);
-        //}
+
+        public IActionResult OnPostDelete(int id)
+        {
+            furnitureServices.Delete(id);
+            return RedirectToPage();
+        }
     }
 }

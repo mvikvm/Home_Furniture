@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using MyLib.DataContext;
 using MyLib.Interfaces;
 using MyLib.Services;
@@ -16,4 +17,9 @@ public static class MyLibFactory
 
 		return new FurnitureServices(new ApplicationContext(options));
 	}
+    public static void AddFurnitureService(this IServiceCollection services, IConfiguration configuration)
+    {
+        services.AddDbContext<IApplicationContext, ApplicationContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+        services.AddScoped<IFurnitureServices, FurnitureServices>();
+    }
 }

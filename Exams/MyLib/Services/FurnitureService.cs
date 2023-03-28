@@ -5,9 +5,9 @@ using MyLib.Models;
 namespace MyLib.Services;
 internal class FurnitureServices : IFurnitureServices
 {
-	private readonly ApplicationContext context;
+	private readonly IApplicationContext context;
 
-	public FurnitureServices(ApplicationContext context)
+	public FurnitureServices(IApplicationContext context)
 	{
 		this.context = context ?? throw new ArgumentNullException(nameof(context));
 	}

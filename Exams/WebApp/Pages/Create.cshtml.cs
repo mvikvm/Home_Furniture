@@ -7,8 +7,6 @@ namespace WebApp.Pages
 {
     public class CreateModel : PageModel
     {
-        public PieceOfFurniture Piece { get; private set; } = null!;
-
         private readonly IFurnitureServices furnitureServices;
 
         public CreateModel(IFurnitureServices furnitureServices)
@@ -16,10 +14,9 @@ namespace WebApp.Pages
             this.furnitureServices = furnitureServices ?? throw new ArgumentNullException(nameof(furnitureServices));
         }
 
-        public IActionResult OnPost (string name, int quantity)
+        public IActionResult OnPost (PieceOfFurniture pieceOfFurniture)
         {
-            var pieceOfFurniture = new PieceOfFurniture(name, quantity);
-           /* Piece =*/ furnitureServices.Create(pieceOfFurniture);
+            furnitureServices.Create(pieceOfFurniture);
             return RedirectToPage("Index");
         }
     }

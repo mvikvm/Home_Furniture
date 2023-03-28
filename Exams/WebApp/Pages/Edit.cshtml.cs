@@ -8,6 +8,7 @@ namespace WebApp.Pages
 {
     public class EditModel : PageModel
     {
+        public int Id { get; private set; }
         public PieceOfFurniture Piece { get; private set; } = null!;
 
         private readonly IFurnitureServices furnitureServices;
@@ -17,12 +18,16 @@ namespace WebApp.Pages
             this.furnitureServices = furnitureServices ?? throw new ArgumentNullException(nameof(furnitureServices));
         }
 
-        public IActionResult OnPost(string name, int quantity)
+        public IActionResult OnGet(int id)
         {
-            var pieceOfFurniture = new PieceOfFurniture(name, quantity);
-            pieceOfFurniture.Id = Piece.Id;
-            furnitureServices.Update(pieceOfFurniture);
+            Id = id;
             return Page();
+        }
+
+        public IActionResult OnPost(PieceOfFurniture pieceOfFurniture)
+        {
+            furnitureServices.Update(pieceOfFurniture);
+            return RedirectToPage("Index");
         }
     }
 }

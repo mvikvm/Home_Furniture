@@ -1,11 +1,15 @@
+using Microsoft.AspNetCore.Mvc;
 using MyLib;
 using MyLib.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorPages();
-builder.Services.AddScoped<IFurnitureServices>(sp => MyLibFactory.GetFurnitureService(builder.Configuration));
+builder.Services.AddRazorPages(option =>
+{
+    option.Conventions.ConfigureFilter(new IgnoreAntiforgeryTokenAttribute());
+});
+builder.Services.AddFurnitureService(builder.Configuration);
 
 var app = builder.Build();
 

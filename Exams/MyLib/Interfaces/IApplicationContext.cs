@@ -11,5 +11,9 @@ namespace MyLib.Interfaces
     public interface IApplicationContext
     {
         DbSet<PieceOfFurniture> PieceOfFurnitures { get; set; }
+
+        int SaveChanges();
+
+        void Dispose();
     }
 }
