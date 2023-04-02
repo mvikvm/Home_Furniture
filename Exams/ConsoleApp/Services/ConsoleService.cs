@@ -38,7 +38,7 @@ internal class ConsoleService
 						Console.WriteLine("Введите Id предмета мебели для редактирования:");
 						int id = EnteredValue();
 						int idForUpdate = IsValidEnteredDijit(id);
-						PieceOfFurniture pieceOfFurnitureForUpdate = AddNewPieceOfFurniture();
+						PieceOfFurniture pieceOfFurnitureForUpdate = AddPieceOfFurnitureForUpdate();
 						pieceOfFurnitureForUpdate.Id = idForUpdate;
 						furnitureServices.Update(pieceOfFurnitureForUpdate);
 						Console.WriteLine($"Предмет мебели с id   {idForUpdate} успешно отредактирован.\n");
@@ -96,11 +96,22 @@ internal class ConsoleService
 		return new PieceOfFurniture(enteredString, enteredDijit);
 	}
 
-	/// <summary>
-	/// Консольное меню
-	/// </summary>
-	/// <returns></returns>
-	private int Menu()
+    private PieceOfFurniture AddPieceOfFurnitureForUpdate()
+    {
+        Console.Write("Введите название предмета мебели, если оставить прежнее нажмите Enter: ");
+        string? str = Console.ReadLine();
+        Console.Write("Введите колличество: ");
+        int enteredDijit = EnteredValue();
+        Console.WriteLine();
+
+        return new PieceOfFurniture(str, enteredDijit);
+    }
+
+    /// <summary>
+    /// Консольное меню
+    /// </summary>
+    /// <returns></returns>
+    private int Menu()
 	{
 		Console.WriteLine("БАЗА ДАННЫХ ПРЕДМЕТОВ МЕБЕЛИ");
 		Console.WriteLine(" 1 - Добавление нового обьекта.\n 2 - Редактирование данных.\n 3 - Вывод на экран БД.\n 4 - Удаление обьекта из БД.\n 0 - Выход из меню");
