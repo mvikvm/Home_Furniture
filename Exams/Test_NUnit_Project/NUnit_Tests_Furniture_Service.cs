@@ -11,7 +11,7 @@ using Moq;
 namespace Test_NUnit_Project
 {
     [TestFixture]
-    public class NUnit_Tests_Furniture_Services
+    public class NUnit_Tests_Furniture_Service
     {
         [Test]
         public void FurnitureServisesInstanceShouldCreateCorrectly()
