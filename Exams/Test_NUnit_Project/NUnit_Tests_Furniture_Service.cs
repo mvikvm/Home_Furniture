@@ -24,6 +24,7 @@ namespace Test_NUnit_Project
         [Test]
         public void FurnitureServisesInstanceShouldThrowExceptionWhenContextIsNull()
         {
+            //Assert.Throws<ArgumentNullException>(() => new FurnitureService(null));
             FluentActions.Invoking(() => new FurnitureService(null)).Should().Throw<ArgumentNullException>();
         }
     }
