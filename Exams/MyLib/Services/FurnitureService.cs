@@ -3,11 +3,11 @@ using MyLib.Interfaces;
 using MyLib.Models;
 
 namespace MyLib.Services;
-internal class FurnitureServices : IFurnitureServices
+internal class FurnitureService : IFurnitureServices
 {
     private readonly IApplicationContext context;
 
-    public FurnitureServices(IApplicationContext context)
+    public FurnitureService(IApplicationContext? context)
     {
         this.context = context ?? throw new ArgumentNullException(nameof(context));
     }

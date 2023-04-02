@@ -17,10 +17,22 @@ namespace Test_NUnit_Project
         public void Setup()
         {
         }
+        [Test]
+        public void FurnitureServisesInstanceShouldCreateCorrectly()
+        {
+            IApplicationContext context = Mock.Of<IApplicationContext>();
+            var act = new FurnitureService(context);
+            act.Should().NotBeNull();
+        }
 
         [Test]
-        public void Test1()
+        public void FurnitureServisesInstanceShouldThrowExceptionWhenContextIsNull()
         {
+            FluentActions.Invoking(() => new FurnitureService(null)).Should().Throw<ArgumentNullException>();
+        }
+       // [Test]
+        //public void Test1()
+       // {
             //    //Arrange
             //    var mock = new Mock<IApplicationContext>();
             //    mock.Setup()
@@ -67,6 +79,6 @@ namespace Test_NUnit_Project
             //            new PieceOfFurniture() { Name = "Шкаф", Quantity = 2 },
             //            new PieceOfFurniture() { Name = "Диван", Quantity = 1 }
             //        };
-        }
+        //}
     }
 }

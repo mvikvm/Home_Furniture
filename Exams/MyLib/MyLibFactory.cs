@@ -15,11 +15,11 @@ public static class MyLibFactory
 		DbContextOptionsBuilder<ApplicationContext> optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
 		DbContextOptions<ApplicationContext> options = optionsBuilder.UseSqlServer(connectionString).Options;
 
-		return new FurnitureServices(new ApplicationContext(options));
+		return new FurnitureService(new ApplicationContext(options));
 	}
     public static void AddFurnitureService(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<IApplicationContext, ApplicationContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
-        services.AddScoped<IFurnitureServices, FurnitureServices>();
+        services.AddScoped<IFurnitureServices, FurnitureService>();
     }
 }
