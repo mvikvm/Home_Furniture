@@ -87,4 +87,10 @@ internal class FurnitureService : IFurnitureServices
     {
         context.Dispose();
     }
+
+    public PieceOfFurniture GetById(int id)
+    {
+        var item = context.PieceOfFurnitures.FirstOrDefault( x => x.Id == id);
+        return item;
+    }
 }

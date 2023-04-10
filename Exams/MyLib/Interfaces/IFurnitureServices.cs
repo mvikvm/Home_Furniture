@@ -7,5 +7,6 @@ public interface IFurnitureServices : IDisposable
 	IEnumerable<PieceOfFurniture> GetAllFurniture();
 	PieceOfFurniture Create(PieceOfFurniture variable);
 	PieceOfFurniture Update(PieceOfFurniture variable);
-	void Delete(int id);
+    PieceOfFurniture GetById(int id);
+    void Delete(int id);
 }
