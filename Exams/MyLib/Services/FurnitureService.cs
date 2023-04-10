@@ -82,15 +82,15 @@ internal class FurnitureService : IFurnitureServices
         context.PieceOfFurnitures.Remove(furniture);
         context.SaveChanges();
     }
+    public PieceOfFurniture GetById(int id)
+    {
+        var item = context.PieceOfFurnitures.FirstOrDefault( x => x.Id == id);
+        return item;
+    }
 
     public void Dispose()
     {
         context.Dispose();
     }
 
-    public PieceOfFurniture GetById(int id)
-    {
-        var item = context.PieceOfFurnitures.FirstOrDefault( x => x.Id == id);
-        return item;
-    }
 }
