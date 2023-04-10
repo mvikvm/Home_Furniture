@@ -18,7 +18,7 @@ internal class FurnitureService : IFurnitureServices
     /// <param name="variable"></param>
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
-    public PieceOfFurniture Create(PieceOfFurniture variable)
+    public IPieceOfFurniture Create(IPieceOfFurniture variable)
     {
         var furniture = context.PieceOfFurnitures.FirstOrDefault(x => x.Name == variable.Name);
 
@@ -26,7 +26,7 @@ internal class FurnitureService : IFurnitureServices
         {
             throw new Exception($"Предмет мебели с названием - {variable.Name} уже существует.\n");
         }
-        context.PieceOfFurnitures.Add(variable);
+        context.PieceOfFurnitures.Add((PieceOfFurniture)variable);
         context.SaveChanges();
         return variable;
     }
@@ -47,7 +47,7 @@ internal class FurnitureService : IFurnitureServices
     /// <param name="variable"></param>
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
-    public PieceOfFurniture Update(PieceOfFurniture variable)
+    public IPieceOfFurniture Update(IPieceOfFurniture variable)
     {
         var furniture = context.PieceOfFurnitures.FirstOrDefault(x => x.Id == variable.Id);
 

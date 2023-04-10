@@ -1,11 +1,12 @@
-﻿using System;
+﻿using MyLib.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MyLib.Models;
-public class PieceOfFurniture
+public class PieceOfFurniture : IPieceOfFurniture
 {
     /// <summary>
     /// id в БД

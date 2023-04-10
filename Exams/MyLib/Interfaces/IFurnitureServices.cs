@@ -5,7 +5,7 @@ namespace MyLib.Interfaces;
 public interface IFurnitureServices : IDisposable
 {
 	IEnumerable<PieceOfFurniture> GetAllFurniture();
-	PieceOfFurniture Create(PieceOfFurniture variable);
-	PieceOfFurniture Update(PieceOfFurniture variable);
+	IPieceOfFurniture Create(IPieceOfFurniture variable);
+	IPieceOfFurniture Update(IPieceOfFurniture variable);
 	void Delete(int id);
 }
