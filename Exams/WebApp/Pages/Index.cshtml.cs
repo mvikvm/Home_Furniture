@@ -9,21 +9,21 @@ namespace WebApp.Pages
     {
         public IEnumerable<PieceOfFurniture> Items { get; private set; } = Enumerable.Empty<PieceOfFurniture>();
 
-        private readonly IFurnitureServices furnitureServices;
+        private readonly IProductsService productsService;
 
-        public IndexModel (IFurnitureServices furnitureServices)
+        public IndexModel (IProductsService productsService)
         {
-            this.furnitureServices = furnitureServices ?? throw new ArgumentNullException(nameof(furnitureServices));
+            this.productsService = productsService ?? throw new ArgumentNullException(nameof(productsService));
         }
 
         public void OnGet()
         {
-            Items = furnitureServices.GetAllFurniture();
+            Items = productsService.GetAll<PieceOfFurniture>();
         }
 
         public IActionResult OnPostDelete(int id)
         {
-            furnitureServices.Delete(id);
+            productsService.Delete<PieceOfFurniture>(id);
             return RedirectToPage();
         }
     }

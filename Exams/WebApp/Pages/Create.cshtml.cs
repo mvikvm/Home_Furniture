@@ -7,9 +7,9 @@ namespace WebApp.Pages
 {
     public class CreateModel : PageModel
     {
-        private readonly IFurnitureServices furnitureServices;
+        private readonly IProductsService furnitureServices;
 
-        public CreateModel(IFurnitureServices furnitureServices)
+        public CreateModel(IProductsService furnitureServices)
         {
             this.furnitureServices = furnitureServices ?? throw new ArgumentNullException(nameof(furnitureServices));
         }

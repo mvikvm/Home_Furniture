@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyLib.Models
 {
-    internal class Beer : IBeer
+    internal class Beer : BaseClass, IBeer
     {
         /// <summary>
         /// Id в БД
@@ -48,6 +48,20 @@ namespace MyLib.Models
             Name = name;
             Quantity = quantity;
             Price = price;
+        }
+
+        public override void Update(BaseClass obj)
+        {
+            if (obj is Beer item)
+            {
+                Name = item.Name;
+                Price = item.Price;
+                Quantity= item.Quantity;
+            }
+            else
+            {
+                throw new InvalidCastException($"{nameof(obj)} has invalid type.");
+            }
         }
     }
 }

@@ -9,17 +9,17 @@ namespace MyLib;
 
 public static class MyLibFactory
 {
-	public static IFurnitureServices GetFurnitureService(IConfiguration configuration)
+	public static IProductsService GetProductService(IConfiguration configuration)
 	{
 		var connectionString = configuration.GetConnectionString("DefaultConnection");
 		DbContextOptionsBuilder<ApplicationContext> optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
 		DbContextOptions<ApplicationContext> options = optionsBuilder.UseSqlServer(connectionString).Options;
 
-		return new FurnitureService(new ApplicationContext(options));
+		return new ProductsService(new ApplicationContext(options));
 	}
-    public static void AddFurnitureService(this IServiceCollection services, IConfiguration configuration)
+    public static void AddMyLibServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<IApplicationContext, ApplicationContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
-        services.AddScoped<IFurnitureServices, FurnitureService>();
+        services.AddScoped<IProductsService, ProductsService>();
     }
 }

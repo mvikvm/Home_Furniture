@@ -9,7 +9,7 @@ builder.Services.AddRazorPages(option =>
 {
     option.Conventions.ConfigureFilter(new IgnoreAntiforgeryTokenAttribute());
 });
-builder.Services.AddFurnitureService(builder.Configuration);
+builder.Services.AddMyLibServices(builder.Configuration);
 
 var app = builder.Build();
 

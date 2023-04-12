@@ -11,9 +11,9 @@ builder.AddJsonFile("appsettings.json");
 // создаем конфигурацию
 IConfigurationRoot config = builder.Build();
 
-using (IFurnitureServices furnitureService = MyLibFactory.GetFurnitureService(config))
+using (IProductsService genericService = MyLibFactory.GetProductService(config))
 {
-	ConsoleService service = new ConsoleService(furnitureService);
+	ConsoleService service = new ConsoleService(genericService);
 	service.Run();
 }
 Console.WriteLine("Приложение закрыто.");

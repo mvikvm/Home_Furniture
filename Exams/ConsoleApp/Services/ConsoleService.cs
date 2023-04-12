@@ -5,11 +5,11 @@ namespace ConsoleApp.Services;
 
 internal class ConsoleService
 {
-	private readonly IFurnitureServices furnitureServices;
+	private readonly IProductsService productsService;
 
-	public ConsoleService(IFurnitureServices furnitureServices)
+	public ConsoleService(IProductsService productsService)
 	{
-		this.furnitureServices = furnitureServices ?? throw new ArgumentNullException(nameof(furnitureServices));
+		this.productsService = productsService ?? throw new ArgumentNullException(nameof(productsService));
 	}
 
 	public void Run()
@@ -28,7 +28,7 @@ internal class ConsoleService
 
 					case 1:
 						PieceOfFurniture pieceOfFurniture = AddNewPieceOfFurniture();
-						var variable = furnitureServices.Create(pieceOfFurniture);
+						var variable = productsService.Create(pieceOfFurniture);
 						Console.WriteLine($"Предмет мебели с id   {variable.Id}, названием - {variable.Name}, в колличестве {variable.Quantity} шт.");
 						Console.WriteLine("Успешно добавлен в БД.\n");
 						Delay();
@@ -40,14 +40,14 @@ internal class ConsoleService
 						int idForUpdate = IsValidEnteredDijit(id);
 						PieceOfFurniture pieceOfFurnitureForUpdate = AddPieceOfFurnitureForUpdate();
 						pieceOfFurnitureForUpdate.Id = idForUpdate;
-						furnitureServices.Update(pieceOfFurnitureForUpdate);
+                        productsService.Update(pieceOfFurnitureForUpdate);
 						Console.WriteLine($"Предмет мебели с id   {idForUpdate} успешно отредактирован.\n");
 						Delay();
 						break;
 
 					case 3:
 						Console.WriteLine("Список объектов:");
-						IEnumerable<PieceOfFurniture> variables = furnitureServices.GetAllFurniture();
+						IEnumerable<PieceOfFurniture> variables = productsService.GetAll<PieceOfFurniture>();
 						Console.WriteLine("Id  |  Название  |  Колличество");
 						foreach (var x in variables)
 						{
@@ -61,7 +61,7 @@ internal class ConsoleService
 						Console.WriteLine("Введите Id предмета мебели для удаления:");
 						int newId = EnteredValue();
 						int idForDelete = IsValidEnteredDijit(newId);
-						furnitureServices.Delete(idForDelete);
+                        productsService.Delete<PieceOfFurniture>(idForDelete);
 						Console.WriteLine($"Предмет мебели с id   {idForDelete} успешно удален.\n");
 						Delay();
 						break;

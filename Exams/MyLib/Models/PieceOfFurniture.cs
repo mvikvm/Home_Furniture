@@ -1,12 +1,13 @@
 ﻿using MyLib.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MyLib.Models;
-public class PieceOfFurniture : IPieceOfFurniture
+public class PieceOfFurniture : BaseClass, IPieceOfFurniture
 {
     /// <summary>
     /// id в БД
@@ -30,5 +31,18 @@ public class PieceOfFurniture : IPieceOfFurniture
     {
         Name = name;
         Quantity = quantity;
+    }
+
+    public override void Update(BaseClass obj)
+    {
+        if (obj is PieceOfFurniture item)
+        {
+            Name = item.Name;
+            Quantity = item.Quantity;
+        }
+        else
+        {
+            throw new InvalidCastException($"{nameof(obj)} has invalid type.");
+        }
     }
 }
