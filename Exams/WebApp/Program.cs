@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using MyLib;
-using MyLib.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 

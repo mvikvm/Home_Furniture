@@ -11,11 +11,11 @@ namespace WebApp.Pages
         public int Id { get; private set; }
         public PieceOfFurniture Piece { get; private set; } = null!;
 
-        private readonly IProductsService productsService;
+        private readonly IProductsService service;
 
-        public EditModel(IProductsService productsService)
+        public EditModel(IProductsService service)
         {
-            this.productsService = productsService ?? throw new ArgumentNullException(nameof(productsService));
+            this.service = service ?? throw new ArgumentNullException(nameof(service));
         }
 
         public IActionResult OnGet(int id)
@@ -26,7 +26,7 @@ namespace WebApp.Pages
 
         public IActionResult OnPost(PieceOfFurniture pieceOfFurniture)
         {
-            productsService.Update(pieceOfFurniture);
+            service.Update(pieceOfFurniture);
             return RedirectToPage("Index");
         }
     }

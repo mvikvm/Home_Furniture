@@ -7,7 +7,7 @@ internal class ProductsService : IProductsService
 {
     private readonly IApplicationContext context;
 
-    public ProductsService(IApplicationContext? context)
+    public ProductsService(IApplicationContext context)
     {
         this.context = context ?? throw new ArgumentNullException(nameof(context));
     }
@@ -52,7 +52,7 @@ internal class ProductsService : IProductsService
 
         if (item is null)
         {
-            throw new Exception($"Item {typeof(T).Name} with specified Id: {variable.Id} is not found.");
+            throw new Exception($"Item {typeof(T).Name} with specified Id: {variable.Id} does not found.");
         }
         item.Update(variable);
         context.SaveChanges();
@@ -70,7 +70,7 @@ internal class ProductsService : IProductsService
 
         if (item is null)
         {
-            throw new Exception($"Item {typeof(T).Name} with specified Id: {id} is not found.");
+            throw new Exception($"Item {typeof(T).Name} with specified Id: {id} does not found.");
         }
         context.Set<T>().Remove(item);
         context.SaveChanges();
@@ -88,7 +88,7 @@ internal class ProductsService : IProductsService
         T? item = context.Set<T>().FirstOrDefault(x => x.Id == id);
         if (item is null)
         {
-            throw new Exception($"Item {typeof(T).Name} with specified Id: {id} is not found.");
+            throw new Exception($"Item {typeof(T).Name} with specified Id: {id} does not found.");
         }
         return item;
     }

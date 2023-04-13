@@ -87,7 +87,7 @@ public class ProductsServiceTests
     //    context.SaveChanges();
     //    PieceOfFurniture exp = new PieceOfFurniture { Name = "Стул", Quantity = 1 };
     //    var service = new ProductsService(context);
-       
+
     //    //Assert
     //    FluentActions.Invoking(() => service.Create(exp)).Should().Throw<Exception>();
     //}

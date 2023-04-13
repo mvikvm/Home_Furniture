@@ -7,16 +7,16 @@ namespace WebApp.Pages
 {
     public class CreateModel : PageModel
     {
-        private readonly IProductsService furnitureServices;
+        private readonly IProductsService service;
 
-        public CreateModel(IProductsService furnitureServices)
+        public CreateModel(IProductsService service)
         {
-            this.furnitureServices = furnitureServices ?? throw new ArgumentNullException(nameof(furnitureServices));
+            this.service = service ?? throw new ArgumentNullException(nameof(service));
         }
 
         public IActionResult OnPost (PieceOfFurniture pieceOfFurniture)
         {
-            furnitureServices.Create(pieceOfFurniture);
+            service.Create(pieceOfFurniture);
             return RedirectToPage("Index");
         }
     }

@@ -7,7 +7,7 @@ namespace MyLib.DataContext;
 
 internal class ApplicationContext : DbContext, IApplicationContext
 {
-    //public DbSet<PieceOfFurniture> PieceOfFurnitures { get; set; }
+    public DbSet<PieceOfFurniture> PieceOfFurnitures { get; set; }
     public DbSet<TEntity> Set<TEntity>() where TEntity : BaseClass
     {
         return base.Set<TEntity>();
