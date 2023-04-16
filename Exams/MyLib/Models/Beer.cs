@@ -3,7 +3,7 @@
 
 namespace MyLib.Models
 {
-    public class Beer : BaseClass/*, IBeer*/
+    internal class Beer : BaseClass, IBeer
     {
         /// <summary>
         /// Стоимостьза литр
@@ -23,7 +23,7 @@ namespace MyLib.Models
         /// <summary>
         /// Навигационное свойство
         /// </summary>
-        public Order? Order { get ; set; }
+        public IOrder? Order { get ; set; }
 
         public Beer()
         {

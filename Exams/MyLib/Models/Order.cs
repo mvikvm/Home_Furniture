@@ -2,38 +2,31 @@
 
 namespace MyLib.Models
 {
-    public class Order : BaseClass/*, IOrder*/
+    internal class Order : BaseClass,IOrder
     {
-        public decimal TotalCost => CountTotalCost();
-        public IEnumerable<Beer> Beers { get ; set; }
+        public decimal TotalCost { get; set; }
+        public IEnumerable<IBeer> Beers { get ; set; }
 
         public Order()
         {
         }
-        public Order( string name, params Beer [] beer)
+        public Order( string name, params IBeer [] beer)
         {
             Name = name;
             Beers = beer;
-        }
-
-        private decimal CountTotalCost()
-        {
-            decimal result = 0;
             foreach (var item in Beers) 
             {
-                decimal cost = item.Quantity * item.Price;
-                result += cost;
+                TotalCost = item.Quantity * item.Price;
             }
-            return result;
         }
 
         public override void Update(BaseClass obj)
         {
-            if (obj is Order item)
+            if (obj is IOrder item)
             {
                 Name = item.Name;
                 Beers = item.Beers;
-                //TotalCost = item.TotalCost;
+                TotalCost = item.TotalCost;
             }
             else
             {

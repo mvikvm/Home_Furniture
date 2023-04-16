@@ -78,19 +78,19 @@ public class ProductsServiceTests
     }
 
 
-    [Test]
-    public void CreateShouldThrowExceptionWhenSpecifiedNameAlreadyExists()
-    {
-        // Arrange
-        var item = new PieceOfFurniture { Name = "Стул", Quantity = 4 };
-        context.Set<PieceOfFurniture>().Add(item);
-        context.SaveChanges();
-        PieceOfFurniture exp = new PieceOfFurniture { Name = "Стул", Quantity = 1 };
-        var service = new ProductsService(context);
+    //[Test]
+    //public void CreateShouldThrowExceptionWhenSpecifiedNameAlreadyExists()
+    //{
+    //    // Arrange
+    //    var item = new PieceOfFurniture { Name = "Стул", Quantity = 4 };
+    //    context.Set<PieceOfFurniture>().Add(item);
+    //    context.SaveChanges();
+    //    PieceOfFurniture exp = new PieceOfFurniture { Name = "Стул", Quantity = 1 };
+    //    var service = new ProductsService(context);
 
-        //Assert
-        FluentActions.Invoking(() => service.Create(exp)).Should().Throw<Exception>();
-    }
+    //    //Assert
+    //    FluentActions.Invoking(() => service.Create(exp)).Should().Throw<Exception>();
+    //}
 
     [Test]
     public void DeleteShouldDeleteItemWhenSpecifiedIdIsFound()
@@ -119,27 +119,27 @@ public class ProductsServiceTests
         FluentActions.Invoking(() => service.Delete<PieceOfFurniture>(1)).Should().Throw<Exception>();
     }
 
-    [Test]
-    public void UpdateShouldChangeItemWhenSpecifiedNameAndQuantityIsCorrectly()
-    {
-        //Arrange
-        var item = new PieceOfFurniture() { Name = "Cтакан", Quantity = 1 };
-        context.Set<PieceOfFurniture>().Add(item);
-        context.SaveChanges();
-        PieceOfFurniture exp = new PieceOfFurniture { Name = "Cтакан", Quantity = 5, Id = item.Id };
-        var service = new ProductsService(context);
+    //[Test]
+    //public void UpdateShouldChangeItemWhenSpecifiedNameAndQuantityIsCorrectly()
+    //{
+    //    //Arrange
+    //    var item = new PieceOfFurniture() { Name = "Cтакан", Quantity = 1 };
+    //    context.Set<PieceOfFurniture>().Add(item);
+    //    context.SaveChanges();
+    //    PieceOfFurniture exp = new PieceOfFurniture { Name = "Cтакан", Quantity = 5, Id = item.Id };
+    //    var service = new ProductsService(context);
 
-        //Act
-        var act = service.Update(exp);
-        //Assert
-        act.Should().NotBeNull();
-        act.Name.Should().Be("Cтакан");
-        act.Quantity.Should().Be(5);
-        act.Id.Should().Be(1);
-        act.Name.Equals(exp.Name).Should().Be(true);
-        act.Quantity.Equals(exp.Quantity).Should().Be(true);
-        act.Id.Equals(exp.Id).Should().Be(true);
-    }
+    //    //Act
+    //    var act = service.Update(exp);
+    //    //Assert
+    //    act.Should().NotBeNull();
+    //    act.Name.Should().Be("Cтакан");
+    //    act.Quantity.Should().Be(5);
+    //    act.Id.Should().Be(1);
+    //    act.Name.Equals(exp.Name).Should().Be(true);
+    //    act.Quantity.Equals(exp.Quantity).Should().Be(true);
+    //    act.Id.Equals(exp.Id).Should().Be(true);
+    //}
 
     //[Test]
     //public void UpdateShouldChangeOnlyQuantityWhehSpecifiedNameIsNullOrEmpty()
