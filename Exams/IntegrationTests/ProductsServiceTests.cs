@@ -139,7 +139,7 @@ public class ProductsServiceTests
         act.Name.Equals(exp.Name).Should().Be(true);
         act.Quantity.Equals(exp.Quantity).Should().Be(true);
         act.Id.Equals(exp.Id).Should().Be(true);
-        }
+    }
 
     //[Test]
     //public void UpdateShouldChangeOnlyQuantityWhehSpecifiedNameIsNullOrEmpty()
