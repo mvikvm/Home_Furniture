@@ -6,16 +6,6 @@ namespace MyLib.Models
     internal class Beer : BaseClass, IBeer
     {
         /// <summary>
-        /// Id в БД
-        /// </summary>
-        public int Id { get; set; }
-
-        /// <summary>
-        /// Название пива
-        /// </summary>
-        public string Name { get ; set; }
-
-        /// <summary>
         /// Стоимостьза литр
         /// </summary>
         public decimal Price { get ; set; }

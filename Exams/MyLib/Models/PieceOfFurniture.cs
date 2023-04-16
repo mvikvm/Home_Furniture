@@ -4,16 +4,6 @@ namespace MyLib.Models;
 public class PieceOfFurniture : BaseClass, IPieceOfFurniture
 {
     /// <summary>
-    /// id в БД
-    /// </summary>
-    public int Id { get; set; }
-
-    /// <summary>
-    /// Название предмета мебели
-    /// </summary>
-    public string Name { get; set; }
-
-    /// <summary>
     /// Колличество предметов мебели
     /// </summary>
     public int Quantity { get; set; }

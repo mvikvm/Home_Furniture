@@ -21,6 +21,7 @@ namespace WebApp.Pages
         public IActionResult OnGet(int id)
         {
             Id = id;
+            Piece = service.GetById<PieceOfFurniture>(id);
             return Page();
         }
 
