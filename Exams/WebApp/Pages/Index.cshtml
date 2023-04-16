@@ -1,7 +1,7 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Furnitures page";
+    ViewData["Title"] = "Main page";
 }
 
 <h2>Список мебели</h2>
@@ -29,4 +29,33 @@
             </td>
         </tr>
     }
+
+@*<h2>Список сортов пива</h2>
+<p><a href="/Create">Добавить сорт пива</a></p>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Название</th>
+        <th>Цена за литр</th>
+        <th>Колличество литров</th>
+    </tr>
+    @foreach (var item in Model.Variables)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.Price</td>
+            <td>@item.Quantity</td>
+            <td>
+                <form method="post">
+                    <a asp-page="Edit" asp-route-id="@item.Id">Изменить</a>
+                    <button type="submit" asp-page-handler="delete" asp-route-id="@item.Id">
+                        Удалить
+                    </button>
+                </form>
+            </td>
+        </tr>
+    }
 </table>
+*@

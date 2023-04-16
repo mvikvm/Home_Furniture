@@ -8,6 +8,7 @@ namespace WebApp.Pages
     public class IndexModel : PageModel
     {
         public IEnumerable<PieceOfFurniture> Items { get; private set; } = Enumerable.Empty<PieceOfFurniture>();
+        //public IEnumerable<Beer> Variables { get; private set; } = Enumerable.Empty<Beer>();
 
         private readonly IProductsService service;
 
@@ -19,6 +20,7 @@ namespace WebApp.Pages
         public void OnGet()
         {
             Items = service.GetAll<PieceOfFurniture>();
+            //Variables = service.GetAll<Beer>();
         }
 
         public IActionResult OnPostDelete(int id)
