@@ -6,9 +6,9 @@ namespace MyLib.Models
     public class Beer : BaseClass/*, IBeer*/
     {
         /// <summary>
-        /// Сорт пива
+        /// Марка пива
         /// </summary>
-        public string TypeOfBeer { get; set; }
+        public string Brend { get; set; }
         /// <summary>
         /// Стоимостьза литр
         /// </summary>
@@ -33,10 +33,10 @@ namespace MyLib.Models
         {
         }
 
-        public Beer(string name, string typeOfBeer,int quantity, decimal price)
+        public Beer(string name, string brend,int quantity, decimal price)
         {
             Name = name;
-            TypeOfBeer = typeOfBeer;
+            Brend = brend;
             Price = price;
             Quantity = quantity;
         }
@@ -46,7 +46,7 @@ namespace MyLib.Models
             if (obj is Beer item)
             {
                 Name = item.Name;
-                TypeOfBeer = item.TypeOfBeer;
+                Brend = item.Brend;
                 Price = item.Price;
                 Quantity= item.Quantity;
             }
