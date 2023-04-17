@@ -19,13 +19,18 @@ namespace WebApp.Pages
 
         public void OnGet()
         {
-            Items = service.GetAll<PieceOfFurniture>();
             Variables = service.GetAll<Beer>();
+            Items = service.GetAll<PieceOfFurniture>();
         }
 
         public IActionResult OnPostDelete(int id)
         {
             service.Delete<PieceOfFurniture>(id);
+            return RedirectToPage();
+        }
+        public IActionResult OnPostDel(int id)
+        {
+            service.Delete<Beer>(id);
             return RedirectToPage();
         }
     }

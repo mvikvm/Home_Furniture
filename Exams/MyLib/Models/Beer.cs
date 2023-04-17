@@ -6,6 +6,10 @@ namespace MyLib.Models
     public class Beer : BaseClass/*, IBeer*/
     {
         /// <summary>
+        /// Сорт пива
+        /// </summary>
+        public string TypeOfBeer { get; set; }
+        /// <summary>
         /// Стоимостьза литр
         /// </summary>
         public decimal Price { get ; set; }
@@ -29,11 +33,12 @@ namespace MyLib.Models
         {
         }
 
-        public Beer(string name,int quantity, decimal price)
+        public Beer(string name, string typeOfBeer,int quantity, decimal price)
         {
             Name = name;
-            Quantity = quantity;
+            TypeOfBeer = typeOfBeer;
             Price = price;
+            Quantity = quantity;
         }
 
         public override void Update(BaseClass obj)
@@ -41,6 +46,7 @@ namespace MyLib.Models
             if (obj is Beer item)
             {
                 Name = item.Name;
+                TypeOfBeer = item.TypeOfBeer;
                 Price = item.Price;
                 Quantity= item.Quantity;
             }

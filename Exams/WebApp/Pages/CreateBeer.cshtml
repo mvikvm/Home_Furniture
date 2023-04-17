@@ -1,0 +1,25 @@
+﻿@page
+@model WebApp.Pages.CreateBeerModel
+@{
+    <h3>Добавление новой марки пива</h3>
+    <form method="post">
+        <p>
+            <label>Название марки</label><br />
+            <input type="text" name="name" />
+        </p>
+        <p>
+            <label>Название сорта</label><br />
+            <input type="text" name="typeOfBeer" />
+        </p>
+        <p>
+            <label>Цена за литр:</label><br />
+            <input type="text" name="price" />
+        </p>
+        <p>
+            <label>Колличество литров:</label><br />
+            <input type="number" name="quantity" />
+        </p>
+        <input type="submit" value="Отправить" />
+    </form>
+
+}

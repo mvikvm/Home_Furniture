@@ -11,6 +11,7 @@ namespace MyLib.DataContext.Configurations
             builder.ToTable("Beers");
             builder.HasKey("Id");
             builder.Property(x => x.Name);
+            builder.Property(x => x.TypeOfBeer);
             builder.Property(x => x.Price);
             builder.Property(x => x.Quantity);
             builder.Ignore(x => x.Order);
