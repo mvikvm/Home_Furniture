@@ -1,32 +1,78 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Furnitures page";
+    ViewData["Title"] = "Main page";
 }
+<div class="row">
+    <div class="col-md-4">
+        <div class="alert alert-warning"><h2>Список мебели</h2></div>
+        <p><a href="/Create">Добавить предмет мебели</a></p>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>
+                        Id
+                    </th>
+                    <th>
+                        Название
+                    </th>
+                    <th>
+                        Колличество
+                    </th>
+                </tr>
+                @foreach (var item in Model.Items)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>@item.Quantity</td>
+                        <td>
+                            <form method="post">
+                                <a asp-page="Edit" asp-route-id="@item.Id">Изменить</a>
+                                <button type="submit" asp-page-handler="delete" asp-route-id="@item.Id">
+                                    Удалить
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 
-<h2>Список мебели</h2>
-<p><a href="/Create">Добавить предмет мебели</a></p>
 
-<table>
-    <tr>
-        <th>Id</th>
-        <th>Название</th>
-        <th>Колличество</th>
-    </tr>
-    @foreach (var item in Model.Items)
-    {
-        <tr>
-            <td>@item.Id</td>
-            <td>@item.Name</td>
-            <td>@item.Quantity</td>
-            <td>
-                <form method="post">
-                    <a asp-page="Edit" asp-route-id="@item.Id">Изменить</a>
-                    <button type="submit" asp-page-handler="delete" asp-route-id="@item.Id">
-                        Удалить
-                    </button>
-                </form>
-            </td>
-        </tr>
-    }
-</table>
+    <div class="col-md-6">
+        <div class="alert alert-info"><h2>Список сортов пива</h2></div>
+        <p><a href="/CreateBeer">Добавить сорт пива</a></p>
+
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <th>Марка пива</th>
+                    <th>Сорт пива</th>
+                    <th>Цена за литр (руб.)</th>
+                    <th>Колличество литров</th>
+                </tr>
+                @foreach (var item in Model.Variables)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Brend</td>
+                        <td>@item.Name</td>
+                        <td>@item.Price</td>
+                        <td>@item.Quantity</td>
+                        <td>
+                            <form method="post">
+                                <a asp-page="EditBeer" asp-route-id="@item.Id">Изменить</a>
+                                <button type="submit" asp-page-handler="del" asp-route-id="@item.Id">
+                                    Удалить
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

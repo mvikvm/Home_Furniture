@@ -11,21 +11,21 @@ using Moq;
 namespace Test_NUnit_Project
 {
     [TestFixture]
-    public class NUnit_Tests_Furniture_Service
+    public class NUnit_Tests_Products_Service
     {
         [Test]
-        public void FurnitureServisesInstanceShouldCreateCorrectly()
+        public void ProductsServiceInstanceShouldCreateCorrectly()
         {
             IApplicationContext context = Mock.Of<IApplicationContext>();
-            var act = new FurnitureService(context);
+            var act = new ProductsService(context);
             act.Should().NotBeNull();
         }
 
         [Test]
-        public void FurnitureServisesInstanceShouldThrowExceptionWhenContextIsNull()
+        public void ProductsServiceInstanceShouldThrowExceptionWhenContextIsNull()
         {
             //Assert.Throws<ArgumentNullException>(() => new FurnitureService(null));
-            FluentActions.Invoking(() => new FurnitureService(null)).Should().Throw<ArgumentNullException>();
+            FluentActions.Invoking(() => new ProductsService(null)).Should().Throw<ArgumentNullException>();
         }
     }
 }

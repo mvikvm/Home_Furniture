@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using MyLib;
-using MyLib.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +8,7 @@ builder.Services.AddRazorPages(option =>
 {
     option.Conventions.ConfigureFilter(new IgnoreAntiforgeryTokenAttribute());
 });
-builder.Services.AddFurnitureService(builder.Configuration);
+builder.Services.AddMyLibServices(builder.Configuration);
 
 var app = builder.Build();
 

@@ -2,18 +2,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MyLib.Interfaces;
 using MyLib.Models;
-using System;
 
 namespace WebApp.Pages
 {
-    public class EditModel : PageModel
+    public class EditBeerModel : PageModel
     {
         public int Id { get; private set; }
-        public PieceOfFurniture Detail { get; private set; } = null!;
+        public Beer Type { get; private set; } = null!;
 
         private readonly IProductsService service;
 
-        public EditModel(IProductsService service)
+        public EditBeerModel(IProductsService service)
         {
             this.service = service ?? throw new ArgumentNullException(nameof(service));
         }
@@ -21,13 +20,13 @@ namespace WebApp.Pages
         public IActionResult OnGet(int id)
         {
             Id = id;
-            Detail = service.GetById<PieceOfFurniture>(id);
+            Type = service.GetById<Beer>(id);
             return Page();
         }
 
-        public IActionResult OnPost(PieceOfFurniture pieceOfFurniture)
+        public IActionResult OnPost(Beer beer)
         {
-            service.Update(pieceOfFurniture);
+            service.Update(beer);
             return RedirectToPage("Index");
         }
     }

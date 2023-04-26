@@ -10,7 +10,8 @@ namespace MyLib.Interfaces
 {
     public interface IApplicationContext
     {
-        DbSet<PieceOfFurniture> PieceOfFurnitures { get; set; }
+        //DbSet<PieceOfFurniture> PieceOfFurnitures { get; set; }
+        DbSet<TEntity> Set<TEntity>() where TEntity : BaseClass;
 
         int SaveChanges();
 

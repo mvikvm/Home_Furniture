@@ -1,0 +1,26 @@
+﻿@page "{id:int}"
+@model WebApp.Pages.EditBeerModel
+@{
+}
+<h2>Редактирование данных о производителе и сорте пива</h2>
+
+<form method="post">
+    <input name="id" value="@Model.Id" type="hidden" />
+    <p>
+        <label>Название марки пива</label><br />
+        <input name="brend" value="@Model.Type?.Brend" />
+    </p>
+    <p>
+        <label>Название сорта пива</label><br />
+        <input name="name" value="@Model.Type?.Name" />
+    </p>
+    <p>
+        <label>Цена за литр (руб.)</label><br />
+        <input name="price" value="@Model.Type?.Price" />
+    </p>
+    <p>
+        <label>Общее колличество литров</label><br />
+        <input name="quantity" value="@Model.Type?.Quantity" type="number" />
+    </p>
+    <input type="submit" value="Сохранить" />
+</form>

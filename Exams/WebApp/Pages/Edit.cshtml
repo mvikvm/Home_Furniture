@@ -8,11 +8,11 @@
     <input name="id" value="@Model.Id" type="hidden" />
     <p>
         <label>Название предмета мебели</label><br />
-        <input name="name" value="@Model.Piece?.Name" />
+        <input name="name" value="@Model.Detail?.Name" />
     </p>
     <p>
         <label>Колличество</label><br />
-        <input name="quantity" value="@Model.Piece?.Quantity" type="number" />
+        <input name="quantity" value="@Model.Detail?.Quantity" type="number" />
     </p>
     <input type="submit" value="Сохранить" />
 </form>

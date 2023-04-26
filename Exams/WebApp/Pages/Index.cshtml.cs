@@ -8,22 +8,29 @@ namespace WebApp.Pages
     public class IndexModel : PageModel
     {
         public IEnumerable<PieceOfFurniture> Items { get; private set; } = Enumerable.Empty<PieceOfFurniture>();
+        public IEnumerable<Beer> Variables { get; private set; } = Enumerable.Empty<Beer>();
 
-        private readonly IFurnitureServices furnitureServices;
+        private readonly IProductsService service;
 
-        public IndexModel (IFurnitureServices furnitureServices)
+        public IndexModel (IProductsService service)
         {
-            this.furnitureServices = furnitureServices ?? throw new ArgumentNullException(nameof(furnitureServices));
+            this.service = service ?? throw new ArgumentNullException(nameof(service));
         }
 
         public void OnGet()
         {
-            Items = furnitureServices.GetAllFurniture();
+            Variables = service.GetAll<Beer>();
+            Items = service.GetAll<PieceOfFurniture>();
         }
 
         public IActionResult OnPostDelete(int id)
         {
-            furnitureServices.Delete(id);
+            service.Delete<PieceOfFurniture>(id);
+            return RedirectToPage();
+        }
+        public IActionResult OnPostDel(int id)
+        {
+            service.Delete<Beer>(id);
             return RedirectToPage();
         }
     }

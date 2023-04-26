@@ -5,18 +5,18 @@ using MyLib.Models;
 
 namespace WebApp.Pages
 {
-    public class CreateModel : PageModel
+    public class CreateBeerModel : PageModel
     {
         private readonly IProductsService service;
 
-        public CreateModel(IProductsService service)
+        public CreateBeerModel(IProductsService service)
         {
             this.service = service ?? throw new ArgumentNullException(nameof(service));
         }
 
-        public IActionResult OnPost (PieceOfFurniture pieceOfFurniture)
+        public IActionResult OnPost(Beer beer)
         {
-            service.Create(pieceOfFurniture);
+            service.Create(beer);
             return RedirectToPage("Index");
         }
     }
